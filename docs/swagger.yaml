@@ -1,0 +1,194 @@
+basePath: /
+definitions:
+  model.CreateUserRequest:
+    properties:
+      passportNumber:
+        type: string
+    type: object
+  model.RequestStartTracking:
+    properties:
+      task_name:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  model.RequestStopTracking:
+    properties:
+      task_name:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  model.UserUpdateRequest:
+    properties:
+      address:
+        type: string
+      name:
+        type: string
+      passport_number:
+        type: string
+      patronymic:
+        type: string
+      surname:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: Effective mobile testing
+  title: Time-tracker
+  version: "1.0"
+paths:
+  /user/:
+    delete:
+      consumes:
+      - application/json
+      description: delete user data
+      parameters:
+      - description: ID
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete User
+      tags:
+      - users
+    patch:
+      consumes:
+      - application/json
+      description: update user data
+      parameters:
+      - description: User ID
+        in: query
+        name: id
+        type: string
+      - description: user udpate data
+        in: body
+        name: input
+        schema:
+          $ref: '#/definitions/model.UserUpdateRequest'
+      produces:
+      - application/json
+      responses: {}
+      summary: Update User
+      tags:
+      - users
+  /user/create/:
+    post:
+      consumes:
+      - application/json
+      description: create user by passportNumber
+      parameters:
+      - description: passport number
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreateUserRequest'
+      produces:
+      - application/json
+      responses: {}
+      summary: Create User
+      tags:
+      - users
+  /user/get-costs/:
+    get:
+      consumes:
+      - application/json
+      description: get info about working
+      parameters:
+      - description: User ID
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Get labor cost
+      tags:
+      - users
+  /user/start-tracking/:
+    patch:
+      consumes:
+      - application/json
+      description: start time for task
+      parameters:
+      - description: choose task and user
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/model.RequestStartTracking'
+      produces:
+      - application/json
+      responses: {}
+      summary: Start tracking
+      tags:
+      - users
+  /user/stop-tracking/:
+    patch:
+      consumes:
+      - application/json
+      description: stop time for task
+      parameters:
+      - description: choose task and user
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/model.RequestStopTracking'
+      produces:
+      - application/json
+      responses: {}
+      summary: Stop tracking
+      tags:
+      - users
+  /users/:
+    get:
+      consumes:
+      - application/json
+      description: Get info by any filters
+      parameters:
+      - description: User ID
+        in: query
+        name: id
+        type: string
+      - description: Surname
+        in: query
+        name: surname
+        type: string
+      - description: Name
+        in: query
+        name: name
+        type: string
+      - description: Patronymic
+        in: query
+        name: patronymic
+        type: string
+      - description: Address
+        in: query
+        name: address
+        type: string
+      - description: Passport Number
+        in: query
+        name: passport_number
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Users
+      tags:
+      - users
+swagger: "2.0"

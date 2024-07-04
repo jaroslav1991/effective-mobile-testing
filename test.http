@@ -1,0 +1,64 @@
+#GET http://localhost:8221/info?passportSerie=2222&passportNumber=111222
+#Accept: application/json
+
+
+###
+
+POST http://localhost:8080/user/create/
+Content-Type: application/json
+
+{
+  "passportNumber": "4321 123321"
+}
+
+
+###
+
+PATCH http://localhost:8080/user/start-tracking/
+Content-Type: application/json
+
+{
+  "task_name": "task5",
+  "user_id": 5
+}
+
+###
+
+PATCH http://localhost:8080/user/stop-tracking/
+Content-Type: application/json
+
+{
+  "task_name": "task1",
+  "user_id": 1
+}
+
+###
+
+GET http://localhost:8080/user/get-costs/?id=qwe
+Accept: application/json
+
+###
+
+GET http://localhost:8080/user/?id=1
+Accept: application/json
+
+###
+
+GET http://localhost:8080/users/?address=Moscow&limit=1&offset=1
+Accept: application/json
+
+###
+
+PATCH http://localhost:8080/user/?id=1
+Content-Type: application/json
+
+{
+  "surname": "test surname",
+  "name": "test1 name",
+  "passport_number": "1234 123456"
+}
+
+###
+
+DELETE http://localhost:8080/user/?id=1
+Accept: application/json
