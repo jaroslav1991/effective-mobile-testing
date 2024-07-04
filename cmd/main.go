@@ -29,6 +29,7 @@ func main() {
 
 	if err := godotenv.Load("./.env"); err != nil {
 		slog.Error("Error loading .env file", slog.String("err", err.Error()))
+		return
 	}
 
 	dbConfig := config.GetDBConfig()

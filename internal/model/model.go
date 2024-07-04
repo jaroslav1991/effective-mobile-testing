@@ -4,21 +4,6 @@ import (
 	"time"
 )
 
-//func (u User) Value() (driver.Value, error) {
-//	data, err := json.Marshal(u)
-//	if err != nil {
-//		return nil, err
-//	}
-//	return string(data), nil
-//}
-//
-//func (u *User) Scan(src interface{}) error {
-//	if data, ok := src.([]byte); ok {
-//		return json.Unmarshal(data, &u)
-//	}
-//	return nil
-//}
-
 type User struct {
 	ID             int64  `json:"id,omitempty"`
 	Surname        string `json:"surname"`
