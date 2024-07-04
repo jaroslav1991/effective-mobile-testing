@@ -13,4 +13,6 @@ COPY ./migrations /go/src/app/migrations
 
 RUN go build -o service ./cmd/
 
-ENTRYPOINT "/go/src/app/service"
+RUN go build -o mock ./cmd/mock
+
+#ENTRYPOINT "/go/src/app/service"

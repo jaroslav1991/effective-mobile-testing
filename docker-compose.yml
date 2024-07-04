@@ -16,9 +16,19 @@ services:
     build:
       dockerfile: Dockerfile
     container_name: effective_mobile_app
+    command: /go/src/app/service
     depends_on:
       - postgres
     environment:
       PG_DSN: ${PG_DSN}
     ports:
       - "8080:8080"
+
+  mock:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+    container_name: mock_app
+    command: /go/src/app/mock
+    ports:
+      - "8221:8221"
